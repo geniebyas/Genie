@@ -27,6 +27,8 @@ class AccountCreationActivity : AppCompatActivity() {
             startActivity(Intent(this,MainActivity::class.java))
         }
     }
+
+    // this is functions
     private fun ac_login(email:String,password:String){}
     private fun ac_signup(username:String,email:String,password:String){}
 }
