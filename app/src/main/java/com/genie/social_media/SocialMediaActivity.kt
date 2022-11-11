@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.genie.R
 import com.genie.databinding.ActivitySocialMediaBinding
 import com.genie.social_media.fragments.*
+import render.animations.Render
+import render.animations.Rotate
 
 class SocialMediaActivity : AppCompatActivity() {
     private lateinit var binding:ActivitySocialMediaBinding
@@ -40,6 +42,15 @@ class SocialMediaActivity : AppCompatActivity() {
                 }
             }
             true
+        }
+        binding.mainLamp.setOnClickListener{
+            Toast.makeText(this,"Lamp Clicked",Toast.LENGTH_SHORT).show()
+        }
+        binding.mainNotification.setOnClickListener {
+            Toast.makeText(this,"Notification Clicked",Toast.LENGTH_SHORT).show()
+        }
+        binding.mainG1Btn.setOnClickListener {
+            Toast.makeText(this,"G1 button Clicked",Toast.LENGTH_SHORT).show()
         }
 
 //        binding.navigationNv.add(MeowBottomNavigation.Model(1,R.drawable.live))
@@ -97,7 +108,7 @@ class SocialMediaActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount > 0) {
+        if (supportFragmentManager.backStackEntryCount > 1) {
             supportFragmentManager.popBackStack()
         } else {
             super.onBackPressed();

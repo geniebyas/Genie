@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/profile_fragment"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".social_media.fragments.ProfileFragment">
     <LinearLayout
@@ -99,7 +100,7 @@
             android:text="@string/bio"/>
     </LinearLayout>
 <com.google.android.material.button.MaterialButton
-    android:id="@+id/my_profile_edit_profile_btn"
+    android:id="@+id/my_profile_edit_profile"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cornerRadius="8dp"
@@ -124,5 +125,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginBottom="60dp"/>
+        android:layout_marginBottom="10dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

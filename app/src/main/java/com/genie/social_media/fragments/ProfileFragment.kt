@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.genie.R
 import com.genie.account.UserModel
 import com.genie.databinding.FragmentProfileBinding
@@ -16,6 +17,9 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
+import render.animations.Flip
+import render.animations.Render
+import render.animations.Slide
 
 class ProfileFragment : Fragment() {
     lateinit var binding:FragmentProfileBinding
@@ -28,27 +32,31 @@ class ProfileFragment : Fragment() {
     ): View {
         binding = FragmentProfileBinding.inflate(layoutInflater)
         binding.root.minWidth = ViewGroup.MarginLayoutParams.MATCH_PARENT
-        auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance()
-        storage = FirebaseStorage.getInstance()
-        database.reference.child("users")
-            .child(auth.uid.toString())
-            .addValueEventListener(object :ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()){
-                        var user = snapshot.getValue(UserModel::class.java)
-                        if (user!=null){
-                            binding.userMyProfileUserName.text = user.name
-                            binding.userMyProfileBio.text = snapshot.child("bio").value.toString()
-                        }
-                    }
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                }
-
-            })
-        binding.myProfileEditProfileBtn.setOnClickListener {
+        var rn = Render(context)
+        rn.setAnimation(Flip.InX(binding.profileFragment))
+        rn.start()
+//        auth = FirebaseAuth.getInstance()
+//        database = FirebaseDatabase.getInstance()
+//        storage = FirebaseStorage.getInstance()
+//        database.reference.child("users")
+//            .child(auth.uid.toString())
+//            .addValueEventListener(object :ValueEventListener{
+//                override fun onDataChange(snapshot: DataSnapshot) {
+//                    if (snapshot.exists()){
+//                        var user = snapshot.getValue(UserModel::class.java)
+//                        if (user!=null){
+//                            binding.userMyProfileUserName.text = user.name
+//                            binding.userMyProfileBio.text = snapshot.child("bio").value.toString()
+//                            Glide.with(context?.applicationContext!!).load(snapshot.child("profile_pic").value).into(binding.userMyProfilePic)
+//                        }
+//                    }
+//                }
+//
+//                override fun onCancelled(error: DatabaseError) {
+//                }
+//
+//            })
+        binding.myProfileEditProfile.setOnClickListener {
             parentFragmentManager.beginTransaction().replace(R.id.main_container,EditProfileFragment(),"edit_profile").addToBackStack("edit profile").commit()
         }
         binding.addPost.setOnClickListener {
@@ -57,24 +65,24 @@ class ProfileFragment : Fragment() {
         var post_list = ArrayList<String>()
         var post_adapter = ProfilePostAdapter(context?.applicationContext!!,post_list)
         binding.uploadedPostRv.adapter = post_adapter
-        database.reference.child("social_media")
-            .child("posts")
-            .addValueEventListener(object :ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()){
-                        for(snapshot1 in snapshot.children){
-                            if (snapshot1.child("post_author").value.toString() == auth.uid.toString()){
-                                post_list.add(0,snapshot1.child("post_url").value.toString())
-                            }
-                        }
-                        post_adapter.notifyDataSetChanged()
-                    }
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                }
-
-            })
+//        database.reference.child("social_media")
+//            .child("posts")
+//            .addValueEventListener(object :ValueEventListener{
+//                override fun onDataChange(snapshot: DataSnapshot) {
+//                    if (snapshot.exists()){
+//                        for(snapshot1 in snapshot.children){
+//                            if (snapshot1.child("post_author").value.toString() == auth.uid.toString()){
+//                                post_list.add(0,snapshot1.child("post_url").value.toString())
+//                            }
+//                        }
+//                        post_adapter.notifyDataSetChanged()
+//                    }
+//                }
+//
+//                override fun onCancelled(error: DatabaseError) {
+//                }
+//
+//            })
         return binding.root
     }
 }

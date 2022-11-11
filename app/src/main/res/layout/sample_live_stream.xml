@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="130dp"
+    android:layout_height="130dp"
+    android:id="@+id/live_user_btn">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/live_profile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="3dp"
+        android:src="@drawable/profile"
+        app:civ_border_color="@color/live"
+        app:civ_border_overlay="true"
+        app:civ_border_width="4dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/live_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alina Parkar"
+        app:layout_constraintTop_toBottomOf="@id/live_profile"
+        app:layout_constraintStart_toStartOf="@id/live_profile"
+        app:layout_constraintEnd_toEndOf="@id/live_profile"
+        android:textAlignment="center"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="live"
+        android:paddingHorizontal="6dp"
+        android:background="@drawable/live_background"
+        app:layout_constraintEnd_toEndOf="@+id/live_profile"
+        app:layout_constraintBottom_toBottomOf="@id/live_profile"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/tajawal_medium"
+        android:textColor="@color/black"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

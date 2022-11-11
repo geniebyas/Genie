@@ -57,4 +57,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx'
     implementation 'com.google.firebase:firebase-storage-ktx'
     implementation 'com.google.firebase:firebase-inappmessaging-display-ktx'
+
+    //Animation library
+    implementation 'com.github.gayanvoice:android-animations:1.0.2'
 }

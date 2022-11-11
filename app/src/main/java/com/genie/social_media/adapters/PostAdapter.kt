@@ -5,14 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.genie.R
 import com.genie.databinding.SampleSocialPostBinding
-import com.genie.social_media.PostModel
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
+import com.genie.social_media.models.PostModel
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 
 class PostAdapter:RecyclerView.Adapter<PostAdapter.PostViewHolder> {
     var context:Context
@@ -38,20 +34,21 @@ class PostAdapter:RecyclerView.Adapter<PostAdapter.PostViewHolder> {
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         var post = post_list[position]
         holder.binding.userPostCaption.text = post.post_caption
-        Glide.with(context).load(post.post_url).placeholder(R.drawable.image_icon).into(holder.binding.userPost)
-        database.reference.child("users")
-            .child(post.post_author)
-            .addValueEventListener(object:ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if(snapshot.exists()){
-                        holder.binding.userName.text=snapshot.child("name").value.toString()
-                    }
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                }
-
-            })
+//        Glide.with(context).load(post.post_url).placeholder(R.drawable.image_icon).into(holder.binding.userPost)
+//        database.reference.child("users")
+//            .child(post.post_author)
+//            .addValueEventListener(object:ValueEventListener{
+//                override fun onDataChange(snapshot: DataSnapshot) {
+//                    if(snapshot.exists()){
+//                        holder.binding.userName.text=snapshot.child("name").value.toString()
+//                        Glide.with(context.applicationContext!!).load(snapshot.child("profile_pic").value).placeholder(R.drawable.profile_icon).into(holder.binding.userProfile)
+//                    }
+//                }
+//
+//                override fun onCancelled(error: DatabaseError) {
+//                }
+//
+//            })
     }
 
     override fun getItemCount(): Int {

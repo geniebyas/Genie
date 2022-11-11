@@ -1,4 +1,4 @@
-package com.genie.social_media
+package com.genie.social_media.models
 
 import com.genie.social_media.fragments.AddPostFragment
 
