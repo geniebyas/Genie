@@ -1,18 +1,17 @@
 package com.genie.social_media.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.genie.Constants
 import com.genie.R
 import com.genie.databinding.SampleLiveStreamBinding
+import com.genie.social_media.activities.ViewLiveActivity
 import com.genie.social_media.models.LiveUsersModel
 import render.animations.Bounce
-import render.animations.Fade
 import render.animations.Render
-import render.animations.Zoom
 
 class LiveUsersAdapter:RecyclerView.Adapter<LiveUsersAdapter.LiveViewHolder> {
     var live_list:ArrayList<LiveUsersModel>
@@ -31,10 +30,14 @@ class LiveUsersAdapter:RecyclerView.Adapter<LiveUsersAdapter.LiveViewHolder> {
             binding.liveName.text = live.username
             binding.liveProfile.setImageBitmap(Constants().decodeImage(live.userprofile))
             binding.liveUserBtn.setOnClickListener {
-                Toast.makeText(binding.liveUserBtn.context,live.username + " Was Live...",Toast.LENGTH_SHORT).show()
                 an.setAnimation(Bounce.In(binding.liveUserBtn))
                 an.setDuration(500)
                 an.start()
+                var intent = Intent(binding.liveUserBtn.context,ViewLiveActivity::class.java)
+                intent.putExtra("name",live.username)
+                intent.putExtra("profile",live.userprofile)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                binding.liveUserBtn.context.applicationContext.startActivity(intent)
             }
         }
     }

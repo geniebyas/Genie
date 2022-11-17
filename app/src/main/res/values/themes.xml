@@ -10,11 +10,12 @@
         <item name="colorSecondaryVariant">@color/secondary</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >@color/primary</item>
-<!--        Text color-->
+        <item name="android:statusBarColor">@color/primary</item>
+        <!--        Text color-->
         <item name="android:textColor">@color/black</item>
         <!-- Customize your theme here. -->
     </style>
+
     <style name="Theme.Genie.Social" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
@@ -25,9 +26,20 @@
         <item name="colorSecondaryVariant">@color/secondary</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >@color/primary</item>
+        <item name="android:statusBarColor">@color/primary</item>
         <!--        Text color-->
         <item name="android:textColor">@color/black</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.Genie.Fullscreen" parent="Theme.Genie">
+        <item name="android:actionBarStyle">@style/Widget.Theme.Genie.ActionBar.Fullscreen</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+
+    <style name="ThemeOverlay.Genie.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <item name="fullscreenTextColor">@color/light_blue_A200</item>
     </style>
 </resources>

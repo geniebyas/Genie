@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:outlineProvider="bounds"
-                app:iconifiedByDefault="true"
+                app:iconifiedByDefault="false"
                 app:queryHint="Search your user"
                 android:paddingStart="9dp"
                 android:background="@color/primary"/>

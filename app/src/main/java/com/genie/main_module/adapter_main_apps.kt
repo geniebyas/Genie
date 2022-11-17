@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.genie.R
 import com.genie.databinding.SampleMainAppsBinding
-import com.genie.social_media.SocialMediaActivity
+import com.genie.social_media.activities.SocialMediaActivity
 
 class adapter_main_apps: RecyclerView.Adapter<adapter_main_apps.MainAppsViewHolder> {
     var context:Context
@@ -30,7 +30,7 @@ class adapter_main_apps: RecyclerView.Adapter<adapter_main_apps.MainAppsViewHold
         holder.binding.mainAppsBtn.text = app
         holder.binding.mainAppsBtn.setOnClickListener {
             if(holder.binding.mainAppsBtn.text == "Social Media"){
-                context.startActivity(Intent(context,SocialMediaActivity::class.java))
+                context.startActivity(Intent(context, SocialMediaActivity::class.java))
             }
         }
     }

@@ -16,21 +16,35 @@
         android:theme="@style/Theme.Genie"
         tools:targetApi="31">
         <activity
-            android:name=".social_media.SocialMediaActivity"
+            android:name=".social_media.activities.GoLiveActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".social_media.activities.ViewLiveActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_view_live"
+            android:theme="@style/Theme.Genie.Fullscreen" />
+        <activity
+            android:name=".social_media.activities.SocialMediaActivity"
             android:exported="true"
             android:theme="@style/Theme.Genie.Social">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".account.AccountCreationActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -1,5 +1,6 @@
 package com.genie.social_media.fragments
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
@@ -12,6 +13,7 @@ import com.genie.Constants
 import com.genie.R
 import com.genie.databinding.ActivitySocialMediaBinding
 import com.genie.databinding.FragmentLiveStreamBinding
+import com.genie.social_media.activities.GoLiveActivity
 import com.genie.social_media.adapters.LiveUsersAdapter
 import com.genie.social_media.models.LiveUsersModel
 import render.animations.Bounce
@@ -40,8 +42,7 @@ class LiveStreamFragment : Fragment() {
         var live_adapter = LiveUsersAdapter(liveusers)
         binding.liveUsersRv.adapter = live_adapter
         var rn = Render(context)
-        rn.setAnimation(Rotate.In(binding.liveUsersRv))
-        rn.setDuration(600)
+        rn.setAnimation(Bounce.InUp(binding.liveUsersRv))
         rn.start()
         rn.setAnimation(Zoom.InUp(binding.addYourLive))
         rn.setDuration(900)
@@ -49,6 +50,9 @@ class LiveStreamFragment : Fragment() {
         binding.addYourLive.setOnClickListener {
             rn.setAnimation(Bounce.InDown(binding.addYourLive))
             rn.start()
+            var intent = Intent(context,GoLiveActivity::class.java)
+            intent.putExtra("username","@patelshakil95")
+            startActivity(intent)
         }
         return binding.root
     }

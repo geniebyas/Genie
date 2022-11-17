@@ -1,4 +1,4 @@
-package com.genie.social_media
+package com.genie.social_media.activities
 
 import android.os.Bundle
 import android.widget.Toast
