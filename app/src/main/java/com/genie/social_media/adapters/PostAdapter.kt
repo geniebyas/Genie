@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.genie.Constants
 import com.genie.R
 import com.genie.databinding.SampleSocialPostBinding
 import com.genie.social_media.models.PostModel
@@ -34,6 +35,8 @@ class PostAdapter:RecyclerView.Adapter<PostAdapter.PostViewHolder> {
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         var post = post_list[position]
         holder.binding.userPostCaption.text = post.post_caption
+        holder.binding.userName.text = post.post_author
+        holder.binding.userPost.setImageBitmap(Constants().decodeImage(post.post_url))
 //        Glide.with(context).load(post.post_url).placeholder(R.drawable.image_icon).into(holder.binding.userPost)
 //        database.reference.child("users")
 //            .child(post.post_author)
